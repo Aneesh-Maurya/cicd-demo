@@ -1,33 +1,26 @@
-name: Node CI/CD Demo with hostinger
+name: Node CI/CD Demo with Hostinger
 
 on:
   push:
     branches: ["main"]
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    -name: deploy to hostinger
-      host: ${{ secrets.HOSTINGER_HOST }}
-      username: ${{ secrets.HOSTINGER_USERNAME }}
-      password: ${{ secrets.HOSTINGER_PASSWORD }}
-      port: 22
-
-      script: |
-        cd /var/www/Node js/loadblacer/cicd-demo
-        git pull origin main
-        npm install
-        pm2 restart app.js
-      
-        
-
-   
-
-    
-
-   
+      - name: Deploy to Hostinger
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOSTINGER_HOST }}
+          username: ${{ secrets.HOSTINGER_USERNAME }}
+          password: ${{ secrets.HOSTINGER_PASSWORD }}
+          port: 22
+          script: |
+            cd "/var/www/Node js/loadblacer/cicd-demo"
+            git pull origin main
+            npm install
+            pm2 restart app.js

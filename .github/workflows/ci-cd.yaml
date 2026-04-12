@@ -19,7 +19,8 @@ jobs:
 
       - name: Install Dependencies
         run: npm install
-
+      - name: server start
+        run: npm start
       # ✅ Run Tests (NO server start needed if using supertest)
       - name: Run Tests
         run: npm test

@@ -1,6 +1,6 @@
 const http = require('http');
 
-http.get('http://localhost:3001/api/test', (res) => {
+http.get('http://localhost:3000/api/test', (res) => {
   if (res.statusCode !== 200) {
     throw new Error("API Test Failed ❌");
   }
@@ -9,7 +9,7 @@ http.get('http://localhost:3001/api/test', (res) => {
   throw err;
 });
 
-http.get('http://localhost:3001/api/test1', (res) => {
+http.get('http://localhost:3000/api/server', (res) => {
   if (res.statusCode !== 200) {
     throw new Error("API Test Failed ❌");
   }

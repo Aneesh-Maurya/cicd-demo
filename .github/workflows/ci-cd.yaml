@@ -20,7 +20,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: server start
-        run: npm start
+        run: npm start &
+      - name: Wait for server
+        run: sleep 5
       # ✅ Run Tests (NO server start needed if using supertest)
       - name: Run Tests
         run: npm test

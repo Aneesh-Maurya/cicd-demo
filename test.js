@@ -9,7 +9,7 @@ http.get('http://localhost:3000/api/test', (res) => {
   throw err;
 });
 
-http.get('http://localhost:3000/api/server', (res) => {
+http.get('http://localhost:3000/', (res) => {
   if (res.statusCode !== 200) {
     throw new Error("API Test Failed ❌");
   }

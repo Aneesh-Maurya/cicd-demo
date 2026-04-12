@@ -10,9 +10,23 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      - name: Deploy to Hostinger
+      - name: Install Dependencies
+        run: npm install
+
+      # ✅ Run Tests (NO server start needed if using supertest)
+      - name: Run Tests
+        run: npm test
+
+      # ✅ Deploy only if tests pass
+      - name: Deploy to Server
+        if: success()
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOSTINGER_HOST }}

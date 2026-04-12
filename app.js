@@ -2,7 +2,7 @@ const express = require('express');
 const app = express(); 
 
 app.get('/api/test', (req, res) => {
-    res.send('Hello World! server is running 1');
+    res.send('Hello DK! server is running 2');
 }
 );
 

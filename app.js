@@ -6,7 +6,7 @@ app.get('/api/test', (req, res) => {
 }
 );
 
-app.get('/api/server', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello World! server is running 3');
 }
 );
